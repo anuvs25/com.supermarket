@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="paralleltesting">
+	<listeners>
+		<listener
+			class-name="com.sevenrmartsupermaket.listeners.ExtentReporter"></listener>
+	</listeners>
+	<test name="Login Testing">
+		<groups>
+			<run>
+				<include name="smoke"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sevenrmartsupermaket.tests.LoginTest"></class>
+		</classes>
+	</test>
+	<test name="SevenRMartManageDeliveryBoyTesting">
+		<groups>
+			<run>
+				<include name="smoke"></include>
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.sevenrmartsupermaket.tests.ManageDeliveryBoyTest"></class>
+		</classes>
+	</test>
+	<test name="SevenRMartManageLocationTesting">
+		<groups>
+			<run>
+				<include name="regression"></include>
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.sevenrmartsupermaket.tests.ManageLocationPageTest"></class>
+		</classes>
+	</test>
+</suite>
