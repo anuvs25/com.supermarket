@@ -20,10 +20,10 @@ public class WaitUtility {
 	}
 
 	// Method to wait for an element's visibility by its XPath
-	public void waitForElementVisibilityByXPath(WebDriver driver, String xpath, long time) {
+	public void waitForElementVisibilityByXPath(WebDriver driver, By xpath, long time) {
 
 		wait = new WebDriverWait(driver, Duration.ofSeconds(time));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
 
 	}
 }

@@ -26,6 +26,9 @@ public class HomePage {
 	@FindBy(xpath="(//p[contains(text(),'Manage Expense')])[2]")
 	WebElement manageExpense;
 	
+	@FindBy(xpath="//a/p[text()='Admin Users']")
+	WebElement adminUsersLink;
+	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -49,5 +52,8 @@ public class HomePage {
 	}
 	public void clickOnManageExpenseSubLink() {
 		manageExpense.click();
+	}
+	public void clickOnAdminUsersLink() {
+		adminUsersLink.click();
 	}
 }

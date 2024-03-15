@@ -16,10 +16,10 @@ public class Excel {
 
 	XSSFRow row;
 	XSSFCell cell;
-	
+
 	public void setExcelFile(String workBookName, String sheetName) {
 		try {
-			String path = Constants.EXCEL_FILE_PATH +workBookName+".xlsx" ;
+			String path = Constants.EXCEL_FILE_PATH + workBookName + ".xlsx";
 			File src = new File(path);
 			FileInputStream fi = new FileInputStream(src);
 			workbook = new XSSFWorkbook(fi);
@@ -28,7 +28,8 @@ public class Excel {
 			e.printStackTrace();
 		}
 	}
-	public String getCellData(int rowNo, int columnNo){
+
+	public String getCellData(int rowNo, int columnNo) {
 		row = sheet.getRow(rowNo);
 		cell = row.getCell(columnNo);
 		switch (cell.getCellType()) {
@@ -46,5 +47,15 @@ public class Excel {
 			return null;
 
 		}
+	}
+
+	public Object[][] getMultidimentionalData(int row, int column) {
+		Object data[][] = new Object[row][column];
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				data[i][j] = getCellData(i, j);
+			}
+		}
+		return data;
 	}
 }
