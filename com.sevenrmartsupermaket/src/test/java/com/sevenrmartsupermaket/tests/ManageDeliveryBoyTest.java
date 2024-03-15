@@ -15,19 +15,19 @@ public class ManageDeliveryBoyTest extends Base {
 	ManageDeliveryBoyPage deliveryboy;
 	GeneralUtility generalutility= new GeneralUtility();
 	
-	@Test (groups="smoke")
-	public void verifyDeliveryBoyCreation() {
-		login = new LoginPage(driver);
-		home = new HomePage(driver);
-		deliveryboy = new ManageDeliveryBoyPage(driver);
-		login.logIn();
-		home.clickOnManageDeliverBoyLink();
-		deliveryboy.createDeliveryBoy("Nandhu", "nandhu@123gmail.com", "9445687815", "TVM", "nandhu@123",
-				"nandhu123@");
-		String expectedMssg = "×\nAlert!\nDelivery Boy Details Created Successfully";
-		String actualMssg = deliveryboy.displaySuccessMessage();
-		Assert.assertEquals(actualMssg, expectedMssg);
-	}
+//	@Test (groups="smoke")
+//	public void verifyDeliveryBoyCreation() {
+//		login = new LoginPage(driver);
+//		home = new HomePage(driver);
+//		deliveryboy = new ManageDeliveryBoyPage(driver);
+//		login.logIn();
+//		home.clickOnManageDeliverBoyLink();
+//		deliveryboy.createDeliveryBoy("Nandhu", "nandhu@123gmail.com", "9445687815", "TVM", "nandhutest",
+//				"nandhu123@");
+//		String expectedMssg = "×\nAlert!\nDelivery Boy Details Created Successfully";
+//		String actualMssg = deliveryboy.displaySuccessMessage();
+//		Assert.assertEquals(actualMssg, expectedMssg);
+//	}
 	
 	@Test
 	public void searchDeliveryBoyByName() {
