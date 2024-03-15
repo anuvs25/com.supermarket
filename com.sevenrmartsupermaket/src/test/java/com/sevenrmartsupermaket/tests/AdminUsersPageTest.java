@@ -14,17 +14,7 @@ public class AdminUsersPageTest extends Base {
 	HomePage homepage;
 	AdminUsersPage adminuser;
 
-	@Test(dataProvider = "AdminUsers", dataProviderClass = DataProviderClass.class)
-	public void createNewAdminUsersWithDataProvider(String newUserName, String newPassword, String newUserType) {
-		login = new LoginPage(driver);
-		login.logIn();
-		homepage = new HomePage(driver);
-		homepage.clickOnAdminUsersLink();
-		adminuser = new AdminUsersPage(driver);
-		adminuser.createNewAdminUser(newUserName, newPassword, newUserType);
-	}
-
-//	@Test(dataProvider ="AdminUsersFromExcel", dataProviderClass = DataProviderClass.class )
+//	@Test(dataProvider = "AdminUsers", dataProviderClass = DataProviderClass.class)
 //	public void createNewAdminUsersWithDataProvider(String newUserName, String newPassword, String newUserType) {
 //		login = new LoginPage(driver);
 //		login.logIn();
@@ -33,6 +23,16 @@ public class AdminUsersPageTest extends Base {
 //		adminuser = new AdminUsersPage(driver);
 //		adminuser.createNewAdminUser(newUserName, newPassword, newUserType);
 //	}
+
+	@Test(dataProvider ="AdminUsersFromExcel", dataProviderClass = DataProviderClass.class )
+	public void createNewAdminUsersWithDataProvider(String newUserName, String newPassword, String newUserType) {
+		login = new LoginPage(driver);
+		login.logIn();
+		homepage = new HomePage(driver);
+		homepage.clickOnAdminUsersLink();
+		adminuser = new AdminUsersPage(driver);
+		adminuser.createNewAdminUser(newUserName, newPassword, newUserType);
+	}
 	
 	@Test
 	public void verifyUserIsDeactivated() {
