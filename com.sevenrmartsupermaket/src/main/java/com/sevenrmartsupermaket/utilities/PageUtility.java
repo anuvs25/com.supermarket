@@ -1,5 +1,7 @@
 package com.sevenrmartsupermaket.utilities;
 
+import java.io.File;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -9,6 +11,7 @@ public class PageUtility {
 	WebDriver driver;
 	Select select;
 	Actions action;
+	File files;
 	
 	public PageUtility(WebDriver driver) {
 		this.driver =driver;
@@ -33,4 +36,9 @@ public class PageUtility {
 		action = new Actions(driver);
 		action.moveToElement(element).build().perform();
 	}  
+	
+	public void chooseFile(String file_location,WebElement element) {
+		files = new File(file_location);
+		element.sendKeys(files.getAbsolutePath());
+	}
 }

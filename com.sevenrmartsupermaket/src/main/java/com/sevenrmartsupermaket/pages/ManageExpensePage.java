@@ -48,7 +48,10 @@ public class ManageExpensePage {
 
 	@FindBy(xpath = "//textarea[@name='remarks']")
 	WebElement remarks;
-
+	
+	@FindBy(xpath="//input[@name='userfile']")
+	WebElement chooseFileButton;
+	
 	@FindBy(xpath = "//button[@name='create']")
 	WebElement saveButton;
 	
@@ -60,6 +63,8 @@ public class ManageExpensePage {
 	
 	@FindBy(xpath="(//p[contains(text(),'Manage Expense')])[1]")
 	WebElement manageExpenseLink;
+	
+	
 	
 	public ManageExpensePage(WebDriver driver) {
 		this.driver = driver;
@@ -184,7 +189,10 @@ public class ManageExpensePage {
 	public void enterRemarks(String exp_remarks) {
 		remarks.sendKeys(exp_remarks);
 	}
-	
+	public void uploadFile(String location) {
+		pageutility = new PageUtility(driver);
+		pageutility.chooseFile(location, chooseFileButton);
+	}
 	public void clickOnSave() {
 		pageutility = new PageUtility(driver);
 		pageutility.mouseHover(saveButton);
@@ -202,7 +210,6 @@ public class ManageExpensePage {
 		selectExpenseType(exp_type);
 		enterAmount(exp_amount);
 		enterRemarks(exp_remarks);
-		clickOnSave();
 	}
 	public String displaySuccessMessage() {
 		return successMessage.getText();

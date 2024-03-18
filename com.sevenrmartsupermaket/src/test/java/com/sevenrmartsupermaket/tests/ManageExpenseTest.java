@@ -23,8 +23,9 @@ public class ManageExpenseTest extends Base {
 		homepage.clickOnManageExpenseLink();
 		homepage.clickOnManageExpenseSubLink();
 		manageexpense = new ManageExpensePage(driver);
-		manageexpense.addExpenseEntry("Sumesh(PR)", "21-01-2024", "Grocery", "8", "8", "Credit Bank", "4350",
+		manageexpense.addExpenseEntry("Sumesh(PR)", "22-01-2024", "Grocery", "8", "8", "Credit Bank", "4350",
 				"Paid for Grocery purchase");
+		manageexpense.clickOnSave();
 		String exp_message = "×\nAlert!\nExpense Record Created Successfully";
 		String act_message = manageexpense.displaySuccessMessage();
 		Assert.assertEquals(act_message, exp_message);
@@ -45,6 +46,7 @@ public class ManageExpenseTest extends Base {
 					excel.getCellData(i, 2),excel.getCellData(i, 3),
 					excel.getCellData(i, 4),excel.getCellData(i, 5),
 					excel.getCellData(i, 6),excel.getCellData(i, 7));
+			manageexpense.clickOnSave();
 			manageexpense.clickOnManageExpensesLink();
 		}
 	}
@@ -54,5 +56,22 @@ public class ManageExpenseTest extends Base {
 		excel.setExcelFile("ManageExpenseList", "ExpenseList");
 		System.out.println(excel.getCellData(2, 1));
 
+	}
+	
+	@Test
+	public void verifyNewExpenseCreationWithFileAttachment() {
+		login = new LoginPage(driver);
+		login.logIn();
+		homepage = new HomePage(driver);
+		homepage.clickOnManageExpenseLink();
+		homepage.clickOnManageExpenseSubLink();
+		manageexpense = new ManageExpensePage(driver);
+		manageexpense.addExpenseEntry("Sumesh(PR)", "22-02-2024", "Grocery", "8", "8", "Credit Bank", "5350",
+				"Paid for Grocery purchase");
+		manageexpense.uploadFile("D:\\Testing\\ExpenseSheet.pdf");
+		manageexpense.clickOnSave();
+		String exp_message = "×\nAlert!\nExpense Record Created Successfully";
+		String act_message = manageexpense.displaySuccessMessage();
+		Assert.assertEquals(act_message, exp_message);
 	}
 }
