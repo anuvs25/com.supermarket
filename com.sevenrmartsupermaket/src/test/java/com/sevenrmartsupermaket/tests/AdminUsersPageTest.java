@@ -24,16 +24,6 @@ public class AdminUsersPageTest extends Base {
 		adminuser.createNewAdminUser(newUserName, newPassword, newUserType);
 	}
 
-//	@Test(dataProvider ="AdminUsersFromExcel", dataProviderClass = DataProviderClass.class )
-//	public void createNewAdminUsersWithDataProvider(String newUserName, String newPassword, String newUserType) {
-//		login = new LoginPage(driver);
-//		login.logIn();
-//		homepage = new HomePage(driver);
-//		homepage.clickOnAdminUsersLink();
-//		adminuser = new AdminUsersPage(driver);
-//		adminuser.createNewAdminUser(newUserName, newPassword, newUserType);
-//	}
-//	
 	@Test
 	public void verifyUserIsDeactivated() {
 		login = new LoginPage(driver);
@@ -41,15 +31,25 @@ public class AdminUsersPageTest extends Base {
 		homepage = new HomePage(driver);
 		homepage.clickOnAdminUsersLink();
 		adminuser = new AdminUsersPage(driver);
-		String initialStatus = adminuser.initialUserStatus("Leona");
+		String initialStatus = adminuser.initialUserStatus("Renjitha");
 		if (initialStatus.equals("Inactive")) {
 			System.out.println("User is already deactivated");
 		} else {
-			adminuser.deactivateAdminUsers("Leona");
+			adminuser.deactivateAdminUsers("Renjitha");
 			String exp_statusMessage = "×\nAlert!\nUser Status Changed Successfully";
 			String act_statusMessage = adminuser.userStatusMessage();
 			Assert.assertEquals(act_statusMessage, exp_statusMessage);
 		}
+	}
+	
+	@Test(dataProvider ="AdminUsersFromExcel", dataProviderClass = DataProviderClass.class )
+	public void createNewAdminUsersWithDataProviderFromExcel(String newUserName, String newPassword, String newUserType) {
+	login = new LoginPage(driver);
+	login.logIn();
+	homepage = new HomePage(driver);
+	homepage.clickOnAdminUsersLink();
+	adminuser = new AdminUsersPage(driver);
+	adminuser.createNewAdminUser(newUserName, newPassword, newUserType);
 	}
 
 }

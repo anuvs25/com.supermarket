@@ -36,7 +36,7 @@ public class AdminUsersPage {
 
 	@FindBy(xpath = "//select[@name='user_type']")
 	WebElement adminUserType;
-	
+
 	@FindBy(xpath = "//button[@name='Create']")
 	WebElement saveButton;
 
@@ -61,7 +61,7 @@ public class AdminUsersPage {
 		pageutility = new PageUtility(driver);
 		pageutility.selectVisibleText(adminUserType, newUserType);
 	}
-	
+
 	public void clickOnSaveButton() {
 		saveButton.click();
 	}
@@ -88,9 +88,11 @@ public class AdminUsersPage {
 		return userStatus.getText();
 	}
 
+
 	public void deactivateAdminUsers(String username) {
 		List<String> user_names = new ArrayList<String>();
 		user_names = generalutility.getTextOfElements(userNamesList);
+		// System.out.println(user_names);
 		int index;
 		for (index = 0; index < user_names.size(); index++) {
 			if (username.equals(user_names.get(index))) {
